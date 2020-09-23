@@ -7,6 +7,7 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.integer :evaluation
       t.text :body
       t.integer :user_id
+      t.integer :genre_id
 
       t.timestamps
     end

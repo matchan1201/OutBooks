@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
   belongs_to :user
-  has_many :genres
+  belongs_to :genre
   attachment :image
 end

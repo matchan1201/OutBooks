@@ -10,3 +10,20 @@ Admin.create!(
   email: "a@a",
   password: "000000"
 )
+User.create!(
+  name: "abc",
+  email: "a@a",
+  password: "000000"
+)
+Genre.create!(
+  name: "自己啓発書"
+)
+Genre.create!(
+  name: "エッセイ"
+)
+Genre.create!(
+  name: "小説"
+)
+Genre.create!(
+  name: "雑誌"
+)

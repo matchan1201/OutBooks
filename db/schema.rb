@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2020_09_20_124447) do
     t.integer "evaluation"
     t.text "body"
     t.integer "user_id"
+    t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
-    t.integer "book_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
