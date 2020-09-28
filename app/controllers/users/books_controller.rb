@@ -8,7 +8,7 @@ class Users::BooksController < ApplicationController
     @book = Book.new(books_params)
     @book.user_id = current_user.id
     @book.save
-    redirect_to books_path
+    redirect_to user_path(@book.user_id)
   end
 
   private

@@ -26,7 +26,7 @@
             <%= link_to " Users", class: "glyphicon glyphicon-user users" %>
           </li>
           <li>
-            <%= link_to " Books", class: "glyphicon glyphicon-book books" %>
+            <%= link_to " Books",books_path, class: "glyphicon glyphicon-book books" %>
           </li>
           <li>
             <%= link_to " logout", destroy_user_session_path,method: :delete, class: "glyphicon glyphicon-log-out logout" %>
