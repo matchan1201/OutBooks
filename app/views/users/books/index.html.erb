@@ -1,53 +1,33 @@
-<div style="margin-top: 100px;">
-  <%=form_for(@book) do |f| %>
+<table class='table table-hover table-inverse' style="margin-top: 100px;">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>Title</th>
+      <th>body</th>
+      <th>auther</th>
+      <th>evaluation</th>
+    </tr>
+  </thead>
 
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.attachment_field :image %>
-  </div>
+  <tbody>
+    <% @books.each do |book| %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+    <tr>
+      <td>
+        <%= attachment_image_tag book, :image, :fill, 30,20, format: 'jpeg' %>
+      </td>
+      <td><%= link_to book.title, book %></td>
+      <td>
+        <%= book.body %>
+      </td>
+      <td>
+        <%= book.author %>
+      </td>
+      <td>
+        <%= book.evaluation %>
+      </td>
 
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body%>
-  </div>
-
-  <div class="field">
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-  </div>
-
-  <%
-=begin%>
-  <div class="field">
-    <%= f.label :evaluation %>
-    <%= f.number_field :evaluation, min:1,max: 5 %>
-  </div>
-  <%
-=end%>
-
-  <div class="field">
-    <%= f.label :evaluation %>
-    <%= f.radio_button :evaluation, :poor %>
-    <%= f.radio_button :evaluation, :bad %>
-    <%= f.radio_button :evaluation, :good %>
-    <%= f.radio_button :evaluation, :very_good %>
-    <%= f.radio_button :evaluation, :excellent %>　
-    <!--ここをgemとjavascriptで実装 -->
-  </div>
-
-  <div class="field">
-    <%= f.label :genre_id %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "　　--選択してください--" %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary"'%>
-  </div>
-  <% end %>
-</div>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
