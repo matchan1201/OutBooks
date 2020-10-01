@@ -1,4 +1,4 @@
-<%=form_for(@book) do |f| %>
+<%=form_for(book) do |f| %>
 
 <div class="field">
   <%= f.label :image %>
@@ -19,15 +19,6 @@
   <%= f.label :author %>
   <%= f.text_field :author %>
 </div>
-
-<%
-=begin%>
-<div class="field">
-  <%= f.label :evaluation %>
-  <%= f.number_field :evaluation, min:1,max: 5 %>
-</div>
-<%
-=end%>
 
 <div class="field">
   <%= f.label :evaluation %>

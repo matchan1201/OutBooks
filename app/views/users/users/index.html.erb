@@ -1,24 +1,27 @@
-<table class='table table-hover table-inverse' style="margin-top: 100px;">
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th>introduciton</th>
-    </tr>
-  </thead>
+<%= render 'user', book: @book %>
+<div class="col-xs-9" %>
+  <table class='table table-hover table-inverse' style="margin-top: 100px;">
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>introduciton</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
+    <tbody>
+      <% @users.each do |user| %>
 
-    <tr>
-      <td>
-        <%= attachment_image_tag user, :profile_image, :fill, 30,20, format: 'jpeg' %>
-      </td>
-      <td><%= link_to user.name,user_path(user) %></td>
-      <td>
-        <%= user.introduction %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <td>
+          <%= attachment_image_tag user, :profile_image, :fill, 30,20, format: 'jpeg' %>
+        </td>
+        <td><%= link_to user.name,user_path(user) %></td>
+        <td>
+          <%= user.introduction %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
