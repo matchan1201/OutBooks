@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
     resources :users
-    resources :books
+    resources :books do
+      resource :book_comments, only: [:create]
+      resources :book_comments, only: [:destroy]
+    end
   end
 end
