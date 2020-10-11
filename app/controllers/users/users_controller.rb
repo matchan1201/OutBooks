@@ -20,6 +20,18 @@ class Users::UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
+  def follows
+    @user = User.find(params[:id])
+    #urlからUser情報を探す
+    @users = @user.following_users
+    #@userがもっているfollowing_userを複数探して来る
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.follower_users
+  end
+
 
   private
   def user_params

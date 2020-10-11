@@ -16,11 +16,11 @@
         </tr>
         <tr>
           <th>follows</th>
-          <th><%= link_to current_user.follower.count,follows_path(user.id) %></th>
+          <th><%= link_to current_user.follower.count %></th>
         </tr>
         <tr>
           <th>followers</th>
-          <th><%= link_to current_user.followed.count, followers_path(user.id) %></th>
+          <th><%= link_to current_user.followed.count %></th>
         </tr>
       </tbody>
     </table>
@@ -31,13 +31,6 @@
     <span class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></span>
     <% end %>
     <% end %>
-    <% if user != current_user %> 
-    <% if current_user.following?(user) %> 
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST, class: "btn btn-success" %>
-      <% end %>
-      <% end %>
     <%=form_for(book) do |f| %>
 
     <div class="field">

@@ -1,0 +1,2 @@
+module Users::RelationshipHelper
+end
