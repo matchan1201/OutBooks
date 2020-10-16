@@ -36,6 +36,7 @@ class User < ApplicationRecord
               @users = User.where(name:"#{word}")
             elsif search == "partial_match"
               @users = User.where("name LIKE?","%#{word}%")
+            else
               @users = User.all
             end
         end

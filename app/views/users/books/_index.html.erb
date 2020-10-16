@@ -1,0 +1,27 @@
+<tbody>
+      <% books.each do |book| %>
+
+      <tr>
+        <td>
+          <%= attachment_image_tag book, :image, :fill, 30,20, format: 'jpeg' %>
+        </td>
+        <td><%= link_to book.title, book %></td>
+        <td>
+          <%= simple_format(book.body) %>
+        </td>
+        <td>
+          <%= book.author %>
+        </td>
+        <td>
+          <%= book.evaluation %>
+        </td>
+        <td>コメント数: <%= book.book_comments.count %></td>
+        <td>
+        <div id="favorite">
+          <%= render "users/favorites/favorite", book: book %>
+        </div>
+        </td>
+
+      </tr>
+      <% end %>
+    </tbody>

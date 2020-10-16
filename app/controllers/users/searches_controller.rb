@@ -6,8 +6,10 @@ class Users::SearchesController < ApplicationController
 
   	if @range == '1' #もし、送られてきた@rangeの情報が1ならば、@usersを表示
   		@users = User.search(search,word) #Userモデルのsearch(search,word)を持ってきている
-  	else
-  		@books = Book.search(search,word)
+		elsif @range == "2"
+			@books = Book.search(search,word)
+		else @range == nil
+			@users = User.all
   	end
   end
 end
