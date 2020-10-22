@@ -17,7 +17,7 @@
         </td>
         <td>コメント数: <%= book.book_comments.count %></td>
         <td>
-        <div id="favorite">
+        <div id="favorite_<%= book.id %>">
           <%= render "users/favorites/favorite", book: book %>
         </div>
         </td>
