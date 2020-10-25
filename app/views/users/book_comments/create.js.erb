@@ -1,3 +1,4 @@
 $("#form").html("<%= j(render "users/book_comments/comment", book_comment: @book_comment, book: @book) %>");
 $("#comment").html("<%= j(render "users/book_comments/comment_form", book_comments: @book_comments) %>");
+$("#error_explanation").remove();
 

@@ -1,40 +1,27 @@
 <div class="row" style="margin-top: 100px;">
-  <p id="notice">
-    <%=  notice %>
-  </p>
-  <h2>User info</h2>
-  <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@user.errors.count, 'error') %> prohibited this book from being saved:
-    </h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <%= form_for(@user) do |f| %>
-  <div class="field">
-    <%= f.label :name, "Name"%>
-    <%= f.text_field :name  %>
-  </div>
+  <p id="notice"><%=  notice %></p>
+    <h2>User info</h2>
+      <%= render "layouts/error", obj: @user %>
+        <%= form_for(@user) do |f| %>
+          <div class="field">
+            <%= f.label :name, "Name"%>
+            <%= f.text_field :name  %>
+          </div>
 
-  <div class="form-group has-icon">
-    <div class="user-edit-image">
-      <%= f.label :image, "Image"%>
-    </div>
-    <%= f.attachment_field :profile_image, class: "user-edit-form" %>
-  </div>
+          <div class="form-group has-icon">
+            <div class="user-edit-image">
+              <%= f.label :image, "Image"%>
+            </div>
+              <%= f.attachment_field :profile_image, class: "user-edit-form" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :introduction, "Introduction" %>
-    <%= f.text_area :introduction  %>
-  </div>
+          <div class="field">
+            <%= f.label :introduction, "Introduction" %>
+            <%= f.text_area :introduction  %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <% end %>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
 </div>

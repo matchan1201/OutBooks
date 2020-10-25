@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   def after_sign_in_path_for(resource)
     if resource.is_a?(Admin)
-      # もしサインインした時のモデルがAdminモデルならtrueを返す
       admins_genres_path
     else
       user_path(current_user)
@@ -11,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     if resource == :user
-       new_user_session_path
+      new_user_session_path
     else
       new_admin_session_path
     end

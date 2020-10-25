@@ -1,78 +1,77 @@
 <div class="row">
   <div class="col-xs-3">
     <h2>User info</h2>
-    <% if current_user %>
-    <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-    <table class="table">
-      <tbody>
-        <tr></tr>
-        <tr>
-          <th>name</th>
-          <th><%= current_user.name %></th>
-        </tr>
-        <tr>
-          <th>introduction</th>
-          <th><%= current_user.introduction  %></th>
-        </tr>
-        <tr>
-          <th>follows</th>
-          <th><%= link_to current_user.follower.count %></th>
-        </tr>
-        <tr>
-          <th>followers</th>
-          <th><%= link_to current_user.followed.count %></th>
-        </tr>
-      </tbody>
-    </table>
-    <% end %>
+      <% if current_user %>
+        <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+        <table class="table">
+          <tbody>
+            <tr></tr>
+            <tr>
+              <th>name</th>
+              <th><%= current_user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= current_user.introduction  %></th>
+            </tr>
+            <tr>
+              <th>follows</th>
+              <th><%= link_to current_user.follower.count %></th>
+            </tr>
+            <tr>
+              <th>followers</th>
+              <th><%= link_to current_user.followed.count %></th>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+        <% if current_user %>
+          <%= link_to edit_user_path(current_user) do %>
+            <span class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></span>
+          <% end %>
+      <% end %>
+        <br>
+          <p style="margin-top: 20px;">新規投稿</p>
+            <%= render "layouts/error", obj: book %>
+              <%=form_for(book) do |f| %>
 
-    <% if current_user %>
-    <%= link_to edit_user_path(current_user) do %>
-    <span class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></span>
-    <% end %>
-    <% end %>
-<br>
-    <p style="margin-top: 20px;">新規投稿</p>
-    <%=form_for(book) do |f| %>
+                <div class="field">
+                  <%= f.label :image %>
+                  <%= f.attachment_field :image %>
+                </div>
 
-    <div class="field">
-      <%= f.label :image %>
-      <%= f.attachment_field :image %>
-    </div>
+                <div class="field">
+                  <%= f.label :title %>
+                  <%= f.text_field :title %>
+                </div>
 
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :body %>
-      <%= f.text_area :body%>
-    </div>
-
-    <div class="field">
-      <%= f.label :author %>
-      <%= f.text_field :author %>
-    </div>
-
-    <div class="field">
-      <%= f.label :evaluation %>
-      <%= f.radio_button :evaluation, :poor %>
-      <%= f.radio_button :evaluation, :bad %>
-      <%= f.radio_button :evaluation, :good %>
-      <%= f.radio_button :evaluation, :very_good %>
-      <%= f.radio_button :evaluation, :excellent %>　
-      <!--ここをgemとjavascriptで実装 -->
-    </div>
-
-    <div class="field">
-      <%= f.label :genre_id %>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "　　--選択してください--" %>
-    </div>
-
-
-    <div class="actions">
-      <%= f.submit class: 'btn btn-primary"'%>
-    </div>
-    <% end %>
-  </div>
+                <div class="field">
+                  <%= f.label :body %>
+                  <%= f.text_area :body%>
+                </div>
+                
+                <div class="field">
+                  <%= f.label :author %>
+                  <%= f.text_field :author %>
+                </div>
+                
+                <div class="field">
+                  <%= f.label :evaluation %>
+                  <%= f.radio_button :evaluation, :poor %>
+                  <%= f.radio_button :evaluation, :bad %>
+                  <%= f.radio_button :evaluation, :good %>
+                  <%= f.radio_button :evaluation, :very_good %>
+                  <%= f.radio_button :evaluation, :excellent %>　
+                  <!--ここをgemとjavascriptで実装 -->
+                </div>
+            
+                <div class="field">
+                  <%= f.label :genre_id %>
+                  <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "　　--選択してください--" %>
+                </div>
+            
+                <div class="actions">
+                  <%= f.submit class: 'btn btn-primary"'%>
+                </div>
+                <% end %>
+</div>

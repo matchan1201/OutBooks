@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root "homes#top"
-  get "about" => "homes#about"
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions'
+    sessions:'admins/sessions'
   }
   namespace :admins do
     resources :genres

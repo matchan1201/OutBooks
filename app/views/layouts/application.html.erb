@@ -23,9 +23,6 @@
             <%= link_to " Home", user_path(current_user.id), class: "glyphicon glyphicon-home home" %>
           </li>
           <li>
-            <%= link_to"OutBook", new_book_path %>
-          </li>
-          <li>
             <%= link_to " Users",users_path, class: "glyphicon glyphicon-user users" %>
           </li>
           <li>
@@ -38,26 +35,11 @@
           <nav>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <%= link_to "商品一覧" %>
-              </li>
-              <li>
-                <%= link_to "会員一覧"  %>
-              </li>
-              <li>
-                <%= link_to "注文履歴一覧" %>
-              </li>
-              <li>
-                <%= link_to "ジャンル一覧" %>
-              </li>
-              <li>
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
               </li>
               <% else %>
               <li>
                 <%= link_to " Home", root_path, class: "glyphicon glyphicon-home home" %>
-              </li>
-              <li>
-                <%= link_to " About", about_path, class: "glyphicon glyphicon-link about" %>
               </li>
               <li>
                 <%= link_to " sign up", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up" %>
@@ -72,21 +54,18 @@
   </header>
   <div class='body'>
     <div class='container'>
-    <br>
-    <br>
-    <br>
-    <br>
     <% if user_signed_in? %>
+    <div class="col-xs-offset-3">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
-        <%= f.text_field (:word) %> 
+        <%= f.text_field (:word) %>
           <%= f.select 'range', options_for_select([['---選択してください---', ''],['User', '1'],['Book', '2']]) %>
           <%= f.select 'search', options_for_select([["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
           <%= f.submit "検索" %>
           <% end %>
           <% end %>
+    </div>
       <%= yield %>
     </div>
   </div>
 </body>
-
 </html>

@@ -1,18 +1,14 @@
 class Users::BooksController < ApplicationController
-
+  before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
   def index
     @books = Book.all
-    @book = Book.new
-  end
-  
-  def new
     @book = Book.new
   end
 
   def show
     @book = Book.find(params[:id])
     @new_book = Book.new
-    @book_comments = BookComment.all
+    @book_comments = BookComment.where(book_id: @book.id)
     @book_comment = BookComment.new
   end
 
@@ -23,14 +19,21 @@ class Users::BooksController < ApplicationController
   def create
     @book = Book.new(books_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book)
+    if @book.save
+      redirect_to book_path(@book)
+    else
+      @books = Book.all
+      render :index
+    end
   end
 
   def update
     @book = Book.find(params[:id])
-    @book.update(books_params)
-    redirect_to book_path(@book)
+    if @book.update(books_params)
+      redirect_to book_path(@book)
+    else
+      render :edit
+    end
   end
 
   def destroy

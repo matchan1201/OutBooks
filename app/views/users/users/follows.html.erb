@@ -7,31 +7,27 @@
         <th>introduciton</th>
       </tr>
     </thead>
-
     <tbody>
       <% @users.each do |user| %>
-
-      <tr>
-        <td>
-          <%= attachment_image_tag user, :profile_image, :fill, 30,20, format: 'jpeg' %>
-        </td>
-        <td><%= link_to user.name,user_path(user) %></td>
-        <td>
-          <%= user.introduction %>
-        </td>
-        <td>フォロー数<%= user.follower.count %></td>
-        <td>フォロワ―数<%= user.followed.count %></td>
-        <td>
-          <% if user != current_user %>
-            <% if current_user.following?(user) %>
+        <tr>
+          <td>
+            <%= attachment_image_tag user, :profile_image, :fill, 30,20, format: 'jpeg',fallback: "no_image.jpg",size:'40x40' %>
+          </td>
+          <td><%= link_to user.name,user_path(user) %></td>
+          <td><%= user.introduction %></td>
+          <td>フォロー数<%= user.follower.count %></td>
+          <td>フォロワ―数<%= user.followed.count %></td>
+          <td>
+            <% if user != current_user %>
+              <% if current_user.following?(user) %>
                 <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
               <% else %>
                 <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
               <% end %>
-              <% end %>
-        </td>
-      </tr>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
-  <div>
+<div>
