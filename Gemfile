@@ -71,6 +71,7 @@ gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'kaminari','~> 1.2.1'
+gem 'rails-i18n'
 group :production do
   gem 'pg'
 end

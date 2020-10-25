@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    attributes:
+      book:
+        title: タイトル
+        author: 作者
+        image: 画像
+        image_id: 画像
+        evaluation: 評価
+        body: 要約
+        genre_id: ジャンル
+        genre: ジャンル
+      user:
+        email: メール
+        name: 名前
+        introduction: 自己紹介
+      book_comment:
+        book_comment: コメント
