@@ -6,7 +6,6 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   with_options presence: true do
   validates :title
-  validates :image_id
   validates :author
   validates :evaluation
   validates :body
