@@ -16,3 +16,12 @@ ja:
         introduction: 自己紹介
       book_comment:
         book_comment: コメント
+
+  enums:
+    book:
+      evaluation:
+        poor: 非常に悪い
+        bad:  悪い
+        good:  普通
+        very_good:  良い
+        excellent:  非常に良い

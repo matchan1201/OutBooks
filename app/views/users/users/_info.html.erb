@@ -31,31 +31,32 @@
           <% end %>
       <% end %>
         <br>
-          <p style="margin-top: 20px;">新規投稿</p>
+          <h2>新規投稿</h2>
             <%= render "layouts/error", obj: book %>
-              <%=form_for(book) do |f| %>
+              <%=form_for book,html: { class: "table-bordered" } do |f| %>
 
-                <div class="field">
-                  <%= f.label :image %>
-                  <%= f.attachment_field :image %>
-                </div>
 
-                <div class="field">
+                <div class="form-group">
                   <%= f.label :title %>
-                  <%= f.text_field :title %>
+                  <%= f.text_field :title,class:"form-control" %>
                 </div>
 
-                <div class="field">
+                <div class="form-group">
                   <%= f.label :body %>
-                  <%= f.text_area :body%>
+                  <%= f.text_area :body,class:"form-control"%>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :image %>
+                  <%= f.attachment_field :image,class:"form-control" %>
                 </div>
                 
-                <div class="field">
+                <div class="form-group">
                   <%= f.label :author %>
-                  <%= f.text_field :author %>
+                  <%= f.text_field :author,class:"form-control" %>
                 </div>
                 
-                <div class="field">
+                <div class="form-group">
                   <%= f.label :evaluation %>
                   <%= f.radio_button :evaluation, :poor %>
                   <%= f.radio_button :evaluation, :bad %>
@@ -65,7 +66,7 @@
                   <!--ここをgemとjavascriptで実装 -->
                 </div>
             
-                <div class="field">
+                <div class="form-group">
                   <%= f.label :genre_id %>
                   <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "　　--選択してください--" %>
                 </div>

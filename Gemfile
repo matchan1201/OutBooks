@@ -75,3 +75,6 @@ gem 'rails-i18n'
 group :production do
   gem 'pg'
 end
+gem 'rails-i18n'
+gem 'enum_help'
+gem 'dotenv-rails'
