@@ -64,12 +64,7 @@
               
                   <div class="form-group">
                     <%= f.label :evaluation %>
-                    <%= f.radio_button :evaluation, :poor %>
-                    <%= f.radio_button :evaluation, :bad %>
-                    <%= f.radio_button :evaluation, :good %>
-                    <%= f.radio_button :evaluation, :very_good %>
-                    <%= f.radio_button :evaluation, :excellent %>　
-                    <!--ここをgemとjavascriptで実装 -->
+                    <%= f.select :evaluation, Book.evaluations.keys.map {|k| [I18n.t("enums.book.evaluation.#{k}"), k]} %>
                   </div>
               
                   <div class="form-group">
